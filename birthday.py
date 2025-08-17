@@ -416,6 +416,7 @@ if not st.session_state.gift_opened:
     ভিডিও দেখার জন্য ক্লিক করুন
 </div>
 """, unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#FF69B4;'>দয়া করে অপেক্ষা করুন—লোডিং চলছে… ধন্যবাদ! ⏱️😊</h2>", unsafe_allow_html=True)
     
     if st.button("এখানে ক্লিক করুন 👇"):
         st.session_state.gift_opened = True
@@ -423,7 +424,7 @@ if not st.session_state.gift_opened:
 
 # 📽 Step 2: Play video
 elif st.session_state.gift_opened and not st.session_state.video_watched:
-    st.markdown("<h2 style='color:#FF69B4;'>### 💝 তোমার জন্য রয়েছে একটি বিশেষ চমকপ্রদ ভিডিও!</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#FF69B4;'>### 💝 তোমার জন্য রয়েছে একটি বিশেষ চমকপ্রদ ভিডিও! </h2>", unsafe_allow_html=True)
     
     video_path = "km_20250814_720p_30f_20250814_142413.mp4"  # Change to your file name
     if os.path.exists(video_path):
@@ -446,6 +447,7 @@ elif st.session_state.gift_opened and not st.session_state.video_watched:
 </div>
 """, unsafe_allow_html=True)
         st.markdown("<h2 style='color:#FF69B4;'>প্রথমে ভিডিওটি দেখুন তারপর continue বোতামটি ক্লিক করুন।</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='color:#FF69B4;'>দয়া করে অপেক্ষা করুন—লোডিং চলছে… ধন্যবাদ! ⏱️😊</h2>", unsafe_allow_html=True)
 
     else:
         st.error(f"⚠️ Video not found: {video_path}")    
