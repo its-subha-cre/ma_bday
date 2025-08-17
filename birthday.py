@@ -19,6 +19,7 @@ from io import BytesIO
 import base64
 import os
 
+
 # =========================
 # 🎯 SETTINGS
 # =========================
@@ -38,6 +39,114 @@ if "show_letter" not in st.session_state:
 # 🌸 PAGE CONFIG
 # =========================
 st.set_page_config(page_title=f"Happy Birthday {MOM_NAME}", layout="centered")
+def encode_image(image_path):
+    with open(image_path, "rb") as f:
+        data = f.read()
+        return base64.b64encode(data).decode()
+
+# krishna_img = encode_image("srikrishna.jpg")
+# momcare = encode_image("momcare.jpg")
+
+# st.markdown(f"""
+#     <style>
+#     /* Fullscreen loader */
+#     #loader {{
+#         position: fixed;
+#         width: 100%;
+#         height: 100%;
+#         background-color: white;
+#         z-index: 9999;
+#         animation: fadeOut 1s ease-in-out 3s forwards;
+#     }}
+
+#     /* Feather image - start at slightly left bottom */
+#     .feather {{
+#         position: absolute;
+#         bottom: 0;                  
+#         left: 50%;                  
+#         transform: translateX(-60%); /* shifted a bit left */
+#         width: 650px;               
+#         animation: flyFeather 3s ease-in-out forwards;
+#     }}
+
+#     @keyframes flyFeather {{
+#         0% {{
+#             transform: translateX(-60%) translateY(0); 
+#             opacity: 0;
+#         }}
+#         20% {{
+#             opacity: 1;
+#         }}
+#         100% {{
+#             transform: translateX(-60%) translateY(-100vh); /* rise up */
+#             opacity: 0;
+#         }}
+#     }}
+
+#     @keyframes fadeOut {{
+#         to {{
+#             opacity: 0;
+#             visibility: hidden;
+#         }}
+#     }}
+#     </style>
+
+#     <div id="loader">
+#         <img src="data:image/png;base64,{momcare}" class="feather" /> 
+#     </div>
+# """, unsafe_allow_html=True)
+
+import base64
+
+def encode_video(video_path):
+    with open(video_path, "rb") as f:
+        video_bytes = f.read()
+    return base64.b64encode(video_bytes).decode()
+
+video_base64 = encode_video("PixVerse_V4.5_Image_Text_360P_i_want_the_video.mp4")  # You need to define this function
+
+# video_base64 = encode_video("intro.mp4")  # Your encoded video string
+
+st.markdown(f"""
+    <style>
+    #loader {{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 9999;
+        animation: fadeOut 1s ease-in-out 4s forwards;
+
+        /* Flexbox centering */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }}
+
+    .intro-video {{
+        width: 300px;
+        height: auto;
+    }}
+
+    @keyframes fadeOut {{
+        to {{
+            opacity: 0;
+            visibility: hidden;
+        }}
+    }}
+    </style>
+
+    <div id="loader">
+        <video class="intro-video" autoplay muted>
+            <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+""", unsafe_allow_html=True)
+
+
 
 def set_background(image_file):
     with open(image_file, "rb") as img_file:
@@ -185,23 +294,23 @@ else:
 # =========================
 # 🖋 TYPEWRITER MESSAGE
 # =========================
-message = """
-💖 পৃথিবীর সবচেয়ে ভালো মা,  
-তোমার অফুরন্ত ভালোবাসা, সহায়তা ও যত্নের জন্য অসীম কৃতজ্ঞতা।  
-তুমি আমার পথপ্রদর্শক আলো এবং সবচেয়ে বড় অনুপ্রেরণা।  
-তোমার প্রতি আমার গভীর শ্রদ্ধা রয়েছে।  
-তোমার জীবন হাসি, আনন্দ ও আশীর্বাদে ভরে উঠুক আজ এবং প্রতিদিন।  
+# message = """
+# 💖 পৃথিবীর সবচেয়ে ভালো মা,  
+# তোমার অফুরন্ত ভালোবাসা, সহায়তা ও যত্নের জন্য অসীম কৃতজ্ঞতা।  
+# তুমি আমার পথপ্রদর্শক আলো এবং সবচেয়ে বড় অনুপ্রেরণা।  
+# তোমার প্রতি আমার গভীর শ্রদ্ধা রয়েছে।  
+# তোমার জীবন হাসি, আনন্দ ও আশীর্বাদে ভরে উঠুক আজ এবং প্রতিদিন।  
 
-**আমি তোমাকে চিরদিন ভালোবাসব! ❤️**
-"""
-placeholder = st.empty()
-typed = ""
-for char in message:
-    typed += char
-    colored_text = f"<span style='color:#FF69B4; font-size:20px; font-weight:600;'>{typed}</span>"
-    placeholder.markdown(colored_text, unsafe_allow_html=True)
-    time.sleep(0.03)
-st.balloons();
+# **আমি তোমাকে চিরদিন ভালোবাসব! ❤️**
+# """
+# placeholder = st.empty()
+# typed = ""
+# for char in message:
+#     typed += char
+#     colored_text = f"<span style='color:#FF69B4; font-size:20px; font-weight:600;'>{typed}</span>"
+#     placeholder.markdown(colored_text, unsafe_allow_html=True)
+#     time.sleep(0.03)
+st.balloons()
 # =========================
 # 📍 MAP (always render; keep order stable)
 # =========================
@@ -303,7 +412,22 @@ else:
 # =========================
 # 📸 STACKED IMAGE REVEAL
 # =========================
+message = """
+💖 পৃথিবীর সবচেয়ে ভালো মা,  
+তোমার অফুরন্ত ভালোবাসা, সহায়তা ও যত্নের জন্য অসীম কৃতজ্ঞতা।  
+তুমি আমার পথপ্রদর্শক আলো এবং সবচেয়ে বড় অনুপ্রেরণা।  
+তোমার প্রতি আমার গভীর শ্রদ্ধা রয়েছে।  
+তোমার জীবন হাসি, আনন্দ ও আশীর্বাদে ভরে উঠুক আজ এবং প্রতিদিন।  
 
+**আমি তোমাকে চিরদিন ভালোবাসব! ❤️**
+"""
+placeholder = st.empty()
+typed = ""
+for char in message:
+    typed += char
+    colored_text = f"<span style='color:#FF69B4; font-size:20px; font-weight:600;'>{typed}</span>"
+    placeholder.markdown(colored_text, unsafe_allow_html=True)
+    time.sleep(0.03)
 
 st.markdown("""
 <div style='
@@ -321,7 +445,7 @@ st.markdown("""
 # Your images with captions
 images_with_captions = [
     ("Screenshot_20250814-205048.Google.png", "মায়ের নাচের স্কুলের জায়গা 🗺️."),
-    ("didarsathe.jpg", "মা তার মেয়ের সাথে ছবি 👩‍👧❤️"),
+    ("didarsathe.jpg", "মা তার মায়ের সাথে ছবি 👩‍👧❤️"),
     ("mamonirsathe.jpg", "মা তার বড় দিদির সাথে ছবি 👩‍👧‍👧📸"),
     ("mamarsathe.jpg", "মা তার ভাইয়ের সাথে ছবি 👩‍👦‍👦📸"),
     ("manimarstahe1.jpg", "মা তার ছোট বোনের সাথে ছবি 👩‍👧‍👧📸"),
