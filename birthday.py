@@ -12,6 +12,12 @@ from PIL import Image
 from io import BytesIO
 import base64
 import os
+# List of (image_path, caption)
+import streamlit as st
+from PIL import Image
+from io import BytesIO
+import base64
+import os
 
 # =========================
 # 🎯 SETTINGS
@@ -195,7 +201,7 @@ for char in message:
     colored_text = f"<span style='color:#FF69B4; font-size:20px; font-weight:600;'>{typed}</span>"
     placeholder.markdown(colored_text, unsafe_allow_html=True)
     time.sleep(0.03)
-
+st.balloons();
 # =========================
 # 📍 MAP (always render; keep order stable)
 # =========================
@@ -298,12 +304,7 @@ else:
 # 📸 STACKED IMAGE REVEAL
 # =========================
 
-# List of (image_path, caption)
-import streamlit as st
-from PIL import Image
-from io import BytesIO
-import base64
-import os
+
 st.markdown("""
 <div style='
     text-align: center;
@@ -323,7 +324,7 @@ images_with_captions = [
     ("didarsathe.jpg", "মা তার মেয়ের সাথে ছবি 👩‍👧❤️"),
     ("mamonirsathe.jpg", "মা তার বড় দিদির সাথে ছবি 👩‍👧‍👧📸"),
     ("mamarsathe.jpg", "মা তার ভাইয়ের সাথে ছবি 👩‍👦‍👦📸"),
-    ("manimarstahe.jpg", "মা তার ছোট বোনের সাথে ছবি 👩‍👧‍👧📸"),
+    ("manimarstahe1.jpg", "মা তার ছোট বোনের সাথে ছবি 👩‍👧‍👧📸"),
     ("banursathe.jpg", "মা বোনের সাথে ছবি 👩‍👧‍👧📸")
 ]
 
